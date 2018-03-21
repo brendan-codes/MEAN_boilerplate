@@ -1,0 +1,9 @@
+<div>
+  <form (ngSubmit)="onSubmit()">
+
+    Question: <input [(ngModel)]="new_question.question" name="question">
+    Description: <input [(ngModel)]="new_question.desc" name="desc">
+    
+    <button>Submit!</button>
+  </form>
+</div>
