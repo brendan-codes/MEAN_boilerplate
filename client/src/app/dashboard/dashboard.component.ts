@@ -25,6 +25,7 @@ export class DashboardComponent implements OnInit {
     const temp = this._http.getAll();
     temp.subscribe((data) => {
       this.questions = data;
+      console.log(this.questions);
     });
   }
 }

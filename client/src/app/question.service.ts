@@ -12,6 +12,10 @@ export class QuestionService {
     return this._http.get('/questions');
   }
 
+  createQuestion(data) {
+    return this._http.post('/question', data);
+  }
+
 
 
   // getQuestions() {
