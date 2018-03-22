@@ -9,35 +9,44 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class NewComponent implements OnInit {
 
+  // create an empty form object
   new_question = {
     question: '',
     desc: ''
   };
 
+  // create an empty errors object
   errors;
 
+  // inject your service
   constructor(private _http: QuestionService, private _router: Router) { }
 
   ngOnInit() {
   }
 
   onSubmit() {
+    // check your form data
     console.log(this.new_question);
-    const temp = this._http.createQuestion(this.new_question);
-    temp.subscribe((data) => {
 
+    // store the observable into a variable
+    const temp = this._http.createQuestion(this.new_question);
+
+    // subscribe to the observable (this sends the http request!)
+    temp.subscribe((data) => { // the callback must be an arrow => function
       console.log(data);
+      // check your data for errors
       if (data['message'] === 'Error') {
+        // load up the errors for display if you have any
         this.errors = data['data'];
         console.log(this.errors);
       } else {
+        // else empty out your form object and redirect
         this.new_question = {
           question: '',
           desc: ''
         };
         this._router.navigate(['/']);
       }
-
     });
   }
 

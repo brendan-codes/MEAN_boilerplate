@@ -4,7 +4,15 @@ import { HttpClient } from '@angular/common/http';
 @Injectable()
 export class QuestionService {
 
-  // questions;
+  // services can be very simple.
+
+  // they are just a collection of http requests that
+  // connect to the data endpoints on our server
+
+  // .get(url)
+  // .post(url, postdata)
+
+  // make sure you import and inject the http client!
 
   constructor(private _http: HttpClient) { }
 
@@ -15,11 +23,5 @@ export class QuestionService {
   createQuestion(data) {
     return this._http.post('/question', data);
   }
-
-
-
-  // getQuestions() {
-  //   return this.questions;
-  // }
 
 }

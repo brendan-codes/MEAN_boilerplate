@@ -22,8 +22,12 @@ export class DashboardComponent implements OnInit {
   }
 
   getAllQuestions() {
+    // store observable
     const temp = this._http.getAll();
-    temp.subscribe((data) => {
+    
+    // subscribe to your observable (this sends the http request!)
+    temp.subscribe((data) => { // the callback must be an arrow => function
+      // upon response, load the data into a local variable for display
       this.questions = data;
       console.log(this.questions);
     });
